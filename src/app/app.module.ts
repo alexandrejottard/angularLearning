@@ -7,6 +7,7 @@ import { MergeStreamComponent } from './components/merge-stream/merge-stream.com
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatSelectModule } from '@angular/material/select';
 import { MatListModule } from '@angular/material/list';
+import {MatCheckboxModule} from '@angular/material/checkbox';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { MatListModule } from '@angular/material/list';
     HttpClientModule,
     BrowserAnimationsModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatCheckboxModule
   ],
   providers: [],
   bootstrap: [AppComponent]
