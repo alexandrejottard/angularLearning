@@ -1,31 +1,37 @@
 [{
         "id": 1,
         "name": "book",
-        "category": 1
+        "category": 1,
+        "isInStock": true
     },
     {
         "id": 2,
         "name": "hammer",
-        "category": 2
+        "category": 2,
+        "isInStock": true
     },
     {
         "id": 3,
         "name": "lamp",
-        "category": 1
+        "category": 1,
+        "isInStock": true
     },
     {
         "id": 4,
         "name": "screwdriver",
-        "category": 2
+        "category": 2,
+        "isInStock": false
     },
     {
         "id": 5,
         "name": "blanket",
-        "category": 1
+        "category": 1,
+        "isInStock": false
     },
     {
         "id": 6,
         "name": "laptop",
-        "category": 3
+        "category": 3,
+        "isInStock": true
     }
 ]
