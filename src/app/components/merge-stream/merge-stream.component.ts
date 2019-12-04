@@ -43,7 +43,8 @@ export class MergeStreamComponent implements OnInit {
       this.categorySelectedSubject.asObservable(),
       this.checkBoxShowAllSubject.asObservable()
     ).pipe(
-      // On filtre les produits afin de ne renvoyer que les produits correspondant à la catégorie séléctionnée
+      /* Dans le cas où la checkbox "ShowAll" est coché, on filtre sur la catégorie,
+      sinon on filtre sur le fait que le produit soit en stock en plus de filtrer sur la catégorie */
       // tslint:disable-next-line: max-line-length
       map(([products, categorySelected, showAll]) => products.filter(product => showAll ? product.category === categorySelected : product.category === categorySelected && product.isInStock))
     );
