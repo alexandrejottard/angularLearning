@@ -22,6 +22,9 @@ export class MergeStreamComponent implements OnInit {
   Le BehaviorSubject permet d'envoyer une première valeur par défaut (1 dans ce cas) */
   public categorySelectedSubject = new BehaviorSubject<number>(1);
 
+  // Même principe que le categorySelectedSubject
+  public checkBoxShowAllSubject = new BehaviorSubject<boolean>(false);
+
   // Observable de produits qui sera merger avec le stream de la catégorie séléctionnée
   public products$: Observable<Product[]>;
 
@@ -37,15 +40,21 @@ export class MergeStreamComponent implements OnInit {
     La méthode prend en entrée deux Observables donc pour le subject on le cast en observable avec "asObservable" */
     this.products$ = combineLatest(
       this.simulationDataService.getProducts(),
-      this.categorySelectedSubject.asObservable()
+      this.categorySelectedSubject.asObservable(),
+      this.checkBoxShowAllSubject.asObservable()
     ).pipe(
       // On filtre les produits afin de ne renvoyer que les produits correspondant à la catégorie séléctionnée
-      map(([products, categorySelected]) => products.filter(product => product.category === categorySelected))
+      // tslint:disable-next-line: max-line-length
+      map(([products, categorySelected, showAll]) => products.filter(product => showAll ? product.category === categorySelected : product.category === categorySelected && product.isInStock))
     );
   }
 
   // A chaque fois qu'une nouvelle valeur est séléctionnée dans le select, on envoie la valeur dans le subject
-  public changeCategorySelected(categoryId: number) {
+  public changeCategorySelected(categoryId: number): void {
     this.categorySelectedSubject.next(+categoryId);
+  }
+
+  public changeCheckBoxShowAll(checked: boolean): void {
+    this.checkBoxShowAllSubject.next(checked);
   }
 }

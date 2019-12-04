@@ -1,5 +1,4 @@
 <div class="div-main">
-
     <mat-form-field>
         <mat-select [value]="1" (selectionChange)="changeCategorySelected($event.value)">
             <mat-option *ngFor="let category of categories$ | async" [value]="category.id">
@@ -9,7 +8,7 @@
     </mat-form-field>
 
     <div>
-
+        <mat-checkbox (change)="changeCheckBoxShowAll($event.checked)">Show all</mat-checkbox>
     </div>
 
     <mat-list>
